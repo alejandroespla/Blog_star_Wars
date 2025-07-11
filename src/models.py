@@ -39,7 +39,7 @@ class Planet(db.Model):
             "climate": self.climate,
             "population": self.population,
             "terrain": self.terrain,
-            "born_characters": [character.id for character in self.born_characters]
+            "born_characters": self.born_characters
         }
 
 class Character(db.Model):
@@ -59,7 +59,7 @@ class Character(db.Model):
             "name": self.name,
             "gender": self.gender,
             "eye_color": self.eye_color,
-            "planet_of_birth": self.planet_of_birth.name if self.planet_of_birth else None
+            "planet_of_birth": self.planet_of_birth 
         }
 
 class Favorite(db.Model):
@@ -76,6 +76,6 @@ class Favorite(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "character": self.character.serialize() if self.character else None,
-            "planet": self.planet.serialize() if self.planet else None
+            "character": self.character,
+            "planet": self.planet 
         }
